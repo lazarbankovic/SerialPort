@@ -89,6 +89,7 @@ namespace
 #include <termios.h>
 #include <sys/ioctl.h>
 #include <linux/serial.h>
+#include <libgen.h>
 
 #include <iostream>
 
@@ -125,7 +126,7 @@ namespace {
 		// Skip devices without a driver
 		if (driver.size() > 0) 
 		{
-			std::string devfile = std::string("/dev/") + basename(dir.c_str());
+			std::string devfile = std::string("/dev/") + basename((char*)dir.c_str());
 
 			// Put serial8250-devices in a separate list
 			if (driver == "serial8250") 
